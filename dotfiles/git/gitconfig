@@ -1,0 +1,52 @@
+[user]
+	name = Max Krivich
+	email = maxkrivich@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	sh = auto
+	ui = true
+[alias]
+	a = add -A
+	c = commit -m
+	ca = commit --amend --no-edit
+	st = status --untracked-files=all
+	ci = commit -v
+	ic = commit -v
+	br = branch -vv
+	bro = browse
+	co = checkout
+	df = diff
+	cp = cherry-pick
+	dc = diff --cached
+	ap = add --patch
+	unstage = reset HEAD
+	rollback = reset --soft HEAD^1
+	rc = rebase --continue
+	rs = rebase --skip
+	ra = rebase --abort
+	pp = push
+	ph = push -u origin HEAD
+	pf = push --force-with-lease origin HEAD
+	pt = push --tags
+	b = for-each-ref --sort=committerdate refs/heads/ --format='%(color:reset)%(refname:short) %(color:green)%(committerdate:relative)%(color:reset)'
+	cf = !branch="$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/') && git checkout ${branch%--*}"
+	rh = reset --hard
+[branch]
+	autosetupmerge = true
+[core]
+	autocrlf = input
+[merge]
+	verbosity = 5
+	tool = diffmerge
+[diff]
+	verbosity = 5
+	tool = changes
+	compactionHeuristic = true
+[push]
+	default = tracking
+[log]
+	date = local
+[pull]
+	rebase = true
