@@ -1,0 +1,22 @@
+Host *
+ Port 22
+ ServerAliveInterval 60
+ ForwardAgent yes
+ UseKeychain yes
+ AddKeysToAgent yes
+ IdentityFile ~/.ssh/personal_rsa
+ IdentityFile ~/.ssh/work_rsa
+
+Host gh-personal
+  Hostname github.com
+  User git
+  IdentityFile ~/.ssh/personal_rsa
+  AddKeysToAgent yes
+  UseKeychain yes
+
+Host gh-work
+  Hostname github.com
+  User git
+  IdentityFile ~/.ssh/work_rsa
+  AddKeysToAgent yes
+  UseKeychain yes
