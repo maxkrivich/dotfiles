@@ -38,6 +38,7 @@ b = for-each-ref --sort=committerdate refs/heads/ --format='%(color:reset)%(refn
 cf = !branch="$(git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/') && git checkout ${branch%--*}"
 rh = reset --hard
 mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
+sync = "!git fetch origin -v; git fetch upstream; git rebase upstream/$(git mainbranch); git push"
 ammend = commit --amend
 amend = commit --amend
 pr = "!f() { \
