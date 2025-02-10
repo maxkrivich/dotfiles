@@ -58,6 +58,11 @@ hub = "!f() { \
 )\"; \
   }; f"
 restore = '!f() { git checkout $(git rev-list -n 1 HEAD -- $1)~1 -- $(git diff --name-status $(git rev-list -n 1 HEAD -- $1)~1 | grep '^D' | cut -f 2); }; f'
+diff-all = !"for name in $(git diff --name-only $1); do git difftool -y $1 $name & done"
+diff-changes = diff --name-status -r
+diff-stat = diff --stat --ignore-space-change -r
+diff-staged = diff --cached
+diff-upstream = !git fetch origin && git diff master origin/master
 
 [branch]
 autosetupmerge = true
@@ -78,3 +83,5 @@ date = local
 rebase = true
 [commit]
 gpgsign = true
+[help]
+  autocorrect = promt
