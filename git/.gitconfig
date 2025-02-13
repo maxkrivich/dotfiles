@@ -74,6 +74,7 @@ tool = diffmerge
 [diff]
 verbosity = 5
 tool = changes
+algorithm = histogram
 compactionHeuristic = true
 [push]
 default = current
@@ -85,3 +86,5 @@ rebase = true
 gpgsign = true
 [help]
   autocorrect = promt
+[init]
+  defaultBranch = main
