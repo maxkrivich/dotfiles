@@ -1,0 +1,29 @@
+# term = xterm-256color
+
+# Window size
+window-width = 120
+window-height = 38
+font-size = 13
+window-save-state = never
+
+# Appearance
+background-opacity = 0.95
+background-blur = true
+window-decoration = true
+
+
+# Font
+font-family = JetBrainsMono Nerd Font
+
+# Theme
+theme = TokyoNight Storm
+
+# Cursor
+cursor-style = bar
+cursor-style-blink = true
+copy-on-select = clipboard
+
+
+# Shell integration
+shell-integration = zsh
+shell-integration-features = cursor,sudo,ssh-env,ssh-terminfo,path,no-title
