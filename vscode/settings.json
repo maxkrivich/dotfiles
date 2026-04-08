@@ -1,0 +1,52 @@
+{
+    "editor.renderWhitespace": "all",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "gitlens.ai.model": "",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "remote.defaultExtensionsIfInstalledLocally": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.vscode-pull-request-github"
+    ],
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "dotenv": false,
+        "ini": false,
+        "json": false,
+        "yaml": false
+    },
+    "[xml]": {
+        "editor.defaultFormatter": "redhat.vscode-xml"
+    },
+    "chat.viewSessions.orientation": "stacked",
+    "docker.extension.dockerEngineAvailabilityPrompt": false,
+    "remote.localPortHost": "allInterfaces",
+    "telemetry.telemetryLevel": "off",
+    "telemetry.feedback.enabled": false,
+    "workbench.enableExperiments": false,
+    "extensions.autoUpdate": false,
+    "extensions.ignoreRecommendations": true,
+    "files.associations": {
+        ".env*": "dotenv",
+        "*.cfg": "ini",
+        "*.cnf": "ini",
+        "*.conf": "ini",
+        "*.config": "ini"
+    },
+    "github.copilot.advanced": {
+        "webSearch": false
+    },
+    "omnisharp.enableTelemetry": false,
+    "powershell.telemetry.enable": false,
+    "pylance.telemetry": false,
+    "python.telemetry.enable": false,
+    "debugpy.telemetry.enable": false
+}

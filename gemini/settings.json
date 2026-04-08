@@ -1,0 +1,41 @@
+{
+  "privacy": {
+    "usageStatisticsEnabled": false
+  },
+  "telemetry": {
+    "enabled": false
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    },
+    "folderTrust": {
+      "enabled": true
+    },
+    "toolSandboxing": true,
+    "disableYoloMode": true,
+    "disableAlwaysAllow": true,
+    "environmentVariableRedaction": {
+      "enabled": true,
+      "blocked": [
+        "AWS_ACCESS_KEY_ID",
+        "AWS_SECRET_ACCESS_KEY",
+        "AWS_SESSION_TOKEN",
+        "GITHUB_TOKEN",
+        "GH_TOKEN",
+        "GOOGLE_API_KEY",
+        "GEMINI_API_KEY",
+        "GOOGLE_APPLICATION_CREDENTIALS",
+        "DATABASE_URL",
+        "DB_URI",
+        "CONNECTION_STRING"
+      ]
+    }
+  },
+  "context": {
+    "fileFiltering": {
+      "respectGitIgnore": true,
+      "respectGeminiIgnore": true
+    }
+  }
+}
