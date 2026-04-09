@@ -1,30 +1,20 @@
 model = "gpt-5.3-codex"
 model_reasoning_effort = "medium"
+model_reasoning_summary = "concise"
 personality = "pragmatic"
 
-default_permissions = "private"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
 
-[permissions.private.filesystem]
-"/Users/max.kryvych/.aws" = "none"
-"/Users/max.kryvych/.azure" = "none"
-"/Users/max.kryvych/.config/gh" = "none"
-"/Users/max.kryvych/.docker/config.json" = "none"
-"/Users/max.kryvych/.gem/credentials" = "none"
-"/Users/max.kryvych/.git-credentials" = "none"
-"/Users/max.kryvych/.gnupg" = "none"
-"/Users/max.kryvych/.kube" = "none"
-"/Users/max.kryvych/.netrc" = "none"
-"/Users/max.kryvych/.npm" = "none"
-"/Users/max.kryvych/.npmrc" = "none"
-"/Users/max.kryvych/.pypirc" = "none"
-"/Users/max.kryvych/.ssh" = "none"
+[features]
+shell_snapshot = true
+web_search_request = false
 
-[permissions.private.filesystem.":project_roots"]
-".env" = "none"
-".env.local" = "none"
-".env.production" = "none"
-"secrets" = "none"
-"config/credentials.json" = "none"
+[sandbox_workspace_write]
+network_access = false
+
+[history]
+persistence = "none"
 
 [analytics]
 enabled = false
@@ -37,6 +27,43 @@ exporter = "none"
 metrics_exporter = "none"
 trace_exporter = "none"
 
+[tui]
+notifications = true
+
 [shell_environment_policy]
 inherit = "core"
-exclude = ["*_TOKEN", "*_SECRET", "*_KEY", "AWS_*", "GITHUB_TOKEN"]
+include_only = [
+  "PATH",
+  "HOME",
+  "USER",
+  "SHELL",
+  "LANG",
+  "LC_ALL",
+  "VIRTUAL_ENV",
+  "PYTHONPATH"
+]
+exclude = [
+  "*KEY*",
+  "*SECRET*",
+  "*TOKEN*",
+  "AWS_*",
+  "AZURE_*",
+  "GCP_*",
+  "GOOGLE_*",
+  "OPENAI_*"
+]
+
+[profiles.fast]
+model_reasoning_effort = "low"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[profiles.deep]
+model_reasoning_effort = "high"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+# For planning, reading, and audits without edits
+[profiles.readonly]
+sandbox_mode = "read-only"
+approval_policy = "never"
