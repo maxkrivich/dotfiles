@@ -27,6 +27,8 @@ brew "ripgrep"
 brew "opencode"
 # Tool for managing OCI containers and pods
 brew "podman"
+# Alternative to docker-compose using podman
+brew "podman-compose"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Cross-shell prompt for astronauts
@@ -49,8 +51,12 @@ brew "zsh-syntax-highlighting"
 cask "claude-code"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents
 cask "cmux"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Menu bar usage monitor for Codex and Claude
 cask "codexbar"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
 cask "font-hack-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
