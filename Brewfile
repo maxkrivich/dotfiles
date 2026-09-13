@@ -21,6 +21,8 @@ brew "mise"
 brew "mole"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # AI coding agent, built for the terminal
@@ -47,6 +49,8 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Command-line interface for 1Password
+cask "1password-cli"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents

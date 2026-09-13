@@ -1,6 +1,8 @@
 [tools]
+fnox = "latest"
 go = "latest"
 helm = "latest"
+k9s = "latest"
 kind = "0.33.0"
 kubectl = "latest"
 kubectx = "latest"
