@@ -1,4 +1,8 @@
 tap "manaflow-ai/cmux"
+# Static checker for GitHub Actions workflow files
+brew "actionlint"
+# Code searching, linting, rewriting
+brew "ast-grep"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
@@ -33,6 +37,8 @@ brew "podman"
 brew "podman-compose"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Autoformat shell script source code
+brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Text interface for Git repositories
@@ -41,6 +47,10 @@ brew "tig"
 brew "tmux"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
+# Find security issues in GitHub Actions setups
+brew "zizmor"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh

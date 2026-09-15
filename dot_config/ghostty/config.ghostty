@@ -15,6 +15,9 @@ background-blur = true
 window-decoration = true
 
 
+macos-option-as-alt = true
+
+
 # Window size
 window-width = 120
 window-height = 38
