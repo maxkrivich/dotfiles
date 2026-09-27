@@ -78,6 +78,9 @@ cask "ghostty"
 cask "headlamp"
 # Clipboard manager
 cask "maccy"
+# Shows the next meeting in the menu bar
+cask "meetingbar"
 go "cmd/go"
 go "cmd/gofmt"
 npm "corepack"
+npm "promptfoo"
