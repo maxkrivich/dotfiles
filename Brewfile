@@ -3,6 +3,8 @@ tap "manaflow-ai/cmux"
 brew "actionlint"
 # Code searching, linting, rewriting
 brew "ast-grep"
+# Official Amazon AWS command-line interface
+brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
@@ -19,6 +21,8 @@ brew "fzf"
 brew "gh"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Command-line interface for Hetzner Cloud
+brew "hcloud"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Deep clean and optimize your Mac
@@ -72,6 +76,8 @@ cask "codexbar"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
 cask "font-hack-nerd-font"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # UI for Kubernetes
