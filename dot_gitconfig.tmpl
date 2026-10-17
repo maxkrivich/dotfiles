@@ -2,6 +2,8 @@
 name = {{ .git.personal.name }}
 email = {{ .git.personal.email }}
 signingkey = {{ .git.personal.key }}
+[core]
+sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519_personal.pub
 {{- range $profile, $p := .git.profiles }}
 [includeIf "gitdir/i:~/Projects/Work/{{ $profile }}/"]
 path = .gitconfig-{{ $profile }}

@@ -4,9 +4,3 @@ Host *
 {{- else if eq .sshAgent "bitwarden" }}
 	IdentityAgent "~/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
 {{- end }}
-
-
-Host github.com
-  User git
-  IdentityFile ~/.ssh/id_ed25519_personal.pub
-  IdentitiesOnly yes
