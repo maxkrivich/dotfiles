@@ -14,7 +14,7 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io).
 brew install chezmoi
 
 # initialize and apply dotfiles from this repo
-chezmoi init --apply git@github.com-work:maxkrivich/dotfiles-config.git
+chezmoi init --apply git@github.com:maxkrivich/dotfiles-config.git
 ```
 
 On a brand-new machine without SSH keys set up yet, bootstrap over HTTPS instead:
@@ -23,7 +23,7 @@ On a brand-new machine without SSH keys set up yet, bootstrap over HTTPS instead
 chezmoi init --apply https://github.com/maxkrivich/dotfiles-config.git
 ```
 
-On first run, chezmoi will prompt once for your full name, personal/work email, personal/work SSH signing key (public key), and which SSH agent (1Password or Bitwarden) to use. Answers are cached in chezmoi's own config, so later `chezmoi apply` runs won't re-prompt.
+On first run, chezmoi will prompt once for which SSH agent (1Password or Bitwarden) to use. The answer is cached in chezmoi's own config, so later `chezmoi apply` runs won't re-prompt.
 
 Commit signing uses `gpg.format = ssh`. With 1Password, `gpg.ssh.program` points at `op-ssh-sign` so signing happens via the agent without the private key ever touching disk. Bitwarden has no equivalent helper yet, so with `sshAgent: bitwarden` signing falls back to the default `ssh-keygen` — verify this actually works before relying on it.
 
@@ -41,12 +41,15 @@ brew bundle --file=~/.local/share/chezmoi/Brewfile
 |---|---|
 | `dot_zshrc` | `~/.zshrc` |
 | `dot_tmux.conf` | `~/.tmux.conf` |
-| `dot_gitconfig.tmpl` | `~/.gitconfig` |
-| `dot_gitconfig-work.tmpl` | `~/.gitconfig-work` |
+| `dot_gitconfig*.tmpl` | `~/.gitconfig`, `~/.gitconfig-<profile>` |
 | `dot_config/` | `~/.config/` (ghostty, mise, starship) |
-| `private_dot_ssh/private_config.tmpl` | `~/.ssh/config` (permissions restricted, contents kept out of `chezmoi diff` output by default) |
+| `private_dot_ssh/` | `~/.ssh/config` and public keys |
 
-Git identity defaults to personal everywhere. Only repos under `Projects/Work/**` switch to the work identity via `.gitconfig-work`.
+## Git identities
+
+Defined in `.chezmoidata/git.yaml`. Personal is the default; a profile applies under `~/Projects/Work/<profile>/` and uses the `github.com-<profile>` SSH alias.
+
+To add a profile: add it to `git.yaml`, then copy the `xebia` stubs (`dot_gitconfig-xebia.tmpl`, `private_dot_ssh/id_ed25519_xebia.pub.tmpl`) under the new name.
 
 ## Everyday usage
 
