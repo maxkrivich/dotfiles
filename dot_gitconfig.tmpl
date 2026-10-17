@@ -1,9 +1,21 @@
 [user]
-name = {{ .name }}
-email = {{ .personalEmail }}
-signingkey = {{ .personalSigningKey }}
-[includeIf "gitdir:Projects/Work/**"]
-path = .gitconfig-work
+name = {{ .git.personal.name }}
+email = {{ .git.personal.email }}
+signingkey = {{ .git.personal.key }}
+{{- range $profile, $p := .git.profiles }}
+[includeIf "gitdir/i:~/Projects/Work/{{ $profile }}/"]
+path = .gitconfig-{{ $profile }}
+{{- range $p.orgs }}
+[url "git@github.com-{{ $profile }}:{{ . }}/"]
+insteadOf = https://github.com/{{ . }}/
+{{- end }}
+{{- end }}
+[credential "https://github.com"]
+helper =
+helper = !{{ .chezmoi.homeDir }}/.local/share/mise/shims/gh auth git-credential
+[credential "https://gist.github.com"]
+helper =
+helper = !{{ .chezmoi.homeDir }}/.local/share/mise/shims/gh auth git-credential
 [color]
 diff = auto
 status = auto

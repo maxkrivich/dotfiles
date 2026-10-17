@@ -1,0 +1,20 @@
+# Git identities. personal is the default; each profile applies to repos under
+# ~/Projects/Work/<profile>/ (case-insensitive). HTTPS URLs for a profile's GitHub
+# orgs are rewritten to its SSH alias, so tools like terraform init use its key.
+# Adding a profile also needs dot_gitconfig-<profile>.tmpl and
+# private_dot_ssh/id_ed25519_<profile>.pub.tmpl stubs.
+git:
+  personal:
+    name: Max Kryvych
+    email: me@kryvych.cc
+    key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILXfd4jIopMyP75P3eiQbs03xAnBjEce/VdIuFkdJXzp
+  profiles:
+    xebia:
+      email: max.kryvych@xebia.com
+      key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH6/nSHPIdad2TMDMpqIqXT7Eme4GiQW7KmQB78ZKx+e
+      orgs: []
+    rituals:
+      name: max-kryvych_rituals
+      email: max.kryvych@xebia.com
+      key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAXF0MG/FrQ3zHc+2DcezpODvNGLqPoJJ6NgJVf4qvoX
+      orgs: [rituals-data]

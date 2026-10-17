@@ -6,16 +6,15 @@ Host *
 {{- end }}
 
 
-# Personal Account
-Host github.com-personal
-  HostName github.com
+Host github.com
   User git
   IdentityFile ~/.ssh/id_ed25519_personal.pub
   IdentitiesOnly yes
+{{- range $profile, $_ := .git.profiles }}
 
-# Work Account
-Host github.com-work
+Host github.com-{{ $profile }}
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_ed25519_work.pub
+  IdentityFile ~/.ssh/id_ed25519_{{ $profile }}.pub
   IdentitiesOnly yes
+{{- end }}

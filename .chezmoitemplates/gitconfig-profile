@@ -1,0 +1,4 @@
+[user]
+  name = {{ get .profile "name" | default .personal.name }}
+  email = {{ .profile.email }}
+  signingkey = {{ .profile.key }}
