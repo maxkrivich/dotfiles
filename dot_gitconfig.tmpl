@@ -6,16 +6,14 @@ signingkey = {{ .git.personal.key }}
 [includeIf "gitdir/i:~/Projects/Work/{{ $profile }}/"]
 path = .gitconfig-{{ $profile }}
 {{- range $p.orgs }}
-[url "git@github.com-{{ $profile }}:{{ . }}/"]
+[includeIf "hasconfig:remote.*.url:https://github.com/{{ . }}/**"]
+path = .gitconfig-{{ $profile }}
+[includeIf "hasconfig:remote.*.url:git@github.com:{{ . }}/**"]
+path = .gitconfig-{{ $profile }}
+[url "git@github.com:{{ . }}/"]
 insteadOf = https://github.com/{{ . }}/
 {{- end }}
 {{- end }}
-[credential "https://github.com"]
-helper =
-helper = !{{ .chezmoi.homeDir }}/.local/share/mise/shims/gh auth git-credential
-[credential "https://gist.github.com"]
-helper =
-helper = !{{ .chezmoi.homeDir }}/.local/share/mise/shims/gh auth git-credential
 [color]
 diff = auto
 status = auto

@@ -2,3 +2,5 @@
   name = {{ get .profile "name" | default .personal.name }}
   email = {{ .profile.email }}
   signingkey = {{ .profile.key }}
+[core]
+  sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519_{{ .name }}.pub
