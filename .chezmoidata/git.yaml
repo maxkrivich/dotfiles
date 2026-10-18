@@ -4,6 +4,7 @@
 # its key. HTTPS URLs for its orgs are rewritten to SSH, so terraform init uses it.
 # Adding a profile also needs dot_gitconfig-<profile>.tmpl and
 # private_dot_ssh/id_ed25519_<profile>.pub.tmpl stubs.
+# Set `archived: true` on a profile to drop it from the setup but keep its data.
 git:
   personal:
     name: Max Kryvych

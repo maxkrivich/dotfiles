@@ -51,6 +51,8 @@ Defined in `.chezmoidata/git.yaml`. Personal is the default; a profile applies u
 
 To add a profile: add it to `git.yaml`, then copy the `xebia` stubs (`dot_gitconfig-xebia.tmpl`, `private_dot_ssh/id_ed25519_xebia.pub.tmpl`) under the new name.
 
+To archive a profile: set `archived: true` on it in `git.yaml`. Its `includeIf`/`insteadOf` rules and stub files are skipped. Files already in `~` stay until you delete them.
+
 ## Everyday usage
 
 ```sh

@@ -5,6 +5,7 @@ signingkey = {{ .git.personal.key }}
 [core]
 sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519_personal.pub
 {{- range $profile, $p := .git.profiles }}
+{{- if get $p "archived" }}{{ continue }}{{ end }}
 [includeIf "gitdir/i:~/Projects/Work/{{ $profile }}/"]
 path = .gitconfig-{{ $profile }}
 {{- range $p.orgs }}

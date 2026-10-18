@@ -1,5 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+
 [aws]
 symbol = " "
 
@@ -88,6 +89,13 @@ symbol = " "
 [git_commit]
 tag_symbol = '  '
 
+[git_metrics]
+disabled = false
+added_style = 'bold green'
+deleted_style = 'bold red'
+format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+only_nonzero_diffs = true
+
 [golang]
 symbol = " "
 
@@ -123,6 +131,7 @@ symbol = " "
 
 [kubernetes]
 symbol = "󱃾 "
+format = '[$symbol$context( \($namespace\))]($style) '
 
 [lua]
 symbol = " "

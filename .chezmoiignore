@@ -25,3 +25,10 @@
 
 **/*.cache
 
+
+{{- range $profile, $p := .git.profiles }}
+{{- if get $p "archived" }}
+.gitconfig-{{ $profile }}
+.ssh/id_ed25519_{{ $profile }}.pub
+{{- end }}
+{{- end }}
