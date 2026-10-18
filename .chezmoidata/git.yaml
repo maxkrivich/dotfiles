@@ -15,7 +15,7 @@ git:
       key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH6/nSHPIdad2TMDMpqIqXT7Eme4GiQW7KmQB78ZKx+e
       orgs: [xebia]
     rituals:
-      name: max-kryvych_rituals
+      name: Max Kryvych 
       email: max.kryvych@xebia.com
       key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAXF0MG/FrQ3zHc+2DcezpODvNGLqPoJJ6NgJVf4qvoX
       orgs: [rituals-data]
