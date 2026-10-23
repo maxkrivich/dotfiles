@@ -1,6 +1,10 @@
 tap "manaflow-ai/cmux"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
+# Asciicast to GIF converter
+brew "agg"
+# Record and share terminal sessions
+brew "asciinema"
 # Code searching, linting, rewriting
 brew "ast-grep"
 # Official Amazon AWS command-line interface
@@ -71,7 +75,7 @@ cask "claude-code"
 cask "cmux"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# Menu bar usage monitor for Codex and Claude
+# Menu bar app for tracking agentic coding limits and usage
 cask "codexbar"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
