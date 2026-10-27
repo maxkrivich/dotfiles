@@ -86,11 +86,16 @@ cask "gcloud-cli"
 cask "ghostty"
 # UI for Kubernetes
 cask "headlamp"
+# Open-source firewall to block unknown outgoing connections
+cask "lulu"
 # Clipboard manager
 cask "maccy"
 # Shows the next meeting in the menu bar
 cask "meetingbar"
+# Menu bar toolkit with keep-awake, system monitor and volume mixer
+cask "vorssaint"
 go "cmd/go"
 go "cmd/gofmt"
+cargo "rustlings"
 npm "corepack"
 npm "promptfoo"
