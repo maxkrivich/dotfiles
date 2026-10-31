@@ -42,7 +42,7 @@ brew bundle --file=~/.local/share/chezmoi/Brewfile
 | `dot_zshrc` | `~/.zshrc` |
 | `dot_tmux.conf` | `~/.tmux.conf` |
 | `dot_gitconfig*.tmpl` | `~/.gitconfig`, `~/.gitconfig-<profile>` |
-| `dot_config/` | `~/.config/` (ghostty, mise, starship) |
+| `dot_config/` | `~/.config/` (ghostty, mise, nvim, starship) |
 | `private_dot_ssh/` | `~/.ssh/config` and public keys |
 
 ## Git identities
@@ -61,3 +61,7 @@ chezmoi diff           # preview pending changes
 chezmoi apply          # apply changes to $HOME
 chezmoi cd             # cd into the source directory
 ```
+
+## Neovim
+
+`dot_config/nvim/init.lua` uses the built-in `vim.pack` (Neovim 0.12+). Plugins, Treesitter parsers and Mason LSP servers install on first launch. After `:lua vim.pack.update()`, run `chezmoi re-add ~/.config/nvim/nvim-pack-lock.json` to keep the lockfile in sync.

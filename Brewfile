@@ -33,6 +33,8 @@ brew "mise"
 brew "mole"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Parser generator CLI, used by nvim-treesitter to build parsers
+brew "tree-sitter-cli"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
 # Search tool like grep and The Silver Searcher
