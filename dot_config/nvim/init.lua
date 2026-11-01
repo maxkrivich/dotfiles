@@ -475,23 +475,40 @@ do
   -- - sr)'  - [S]urround [R]eplace [)] [']
   require('mini.surround').setup()
 
-  -- Start screen with recent files when nvim opens without a file
-  require('mini.starter').setup()
+  -- Start screen when nvim opens without a file
+  vim.pack.add { gh 'goolord/alpha-nvim' }
+  local dashboard = require 'alpha.themes.dashboard'
+  dashboard.section.buttons.val = {
+    dashboard.button('f', '󰈞  Find file', '<Cmd>Telescope find_files<CR>'),
+    dashboard.button('r', '  Recent files', '<Cmd>Telescope oldfiles<CR>'),
+    dashboard.button('g', '󰈬  Find word', '<Cmd>Telescope live_grep<CR>'),
+    dashboard.button('e', '  File tree', '<Cmd>Neotree reveal<CR>'),
+    dashboard.button('n', '  New file', '<Cmd>enew<CR>'),
+    dashboard.button('c', '  Config', "<Cmd>lua require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' }<CR>"),
+    dashboard.button('q', '󰅚  Quit', '<Cmd>qa<CR>'),
+  }
+  require('alpha').setup(dashboard.config)
 
-  -- Simple and easy statusline.
-  --  You could remove this setup call if you don't like it,
-  --  and try some other statusline plugin
-  local statusline = require 'mini.statusline'
-  -- Set `use_icons` to true if you have a Nerd Font
-  statusline.setup { use_icons = vim.g.have_nerd_font }
+  -- Statusline. See `:help lualine.txt`
+  vim.pack.add { gh 'nvim-lualine/lualine.nvim' }
+  require('lualine').setup {
+    options = { icons_enabled = vim.g.have_nerd_font, globalstatus = true },
+    sections = {
+      lualine_c = { { 'filename', path = 1 } },
+      lualine_x = {
+        'searchcount',
+        'selectioncount',
+        'lsp_status',
+        -- Only show encoding / line endings when they are unusual
+        { 'encoding', cond = function() return vim.bo.fileencoding ~= '' and vim.bo.fileencoding ~= 'utf-8' end },
+        { 'fileformat', cond = function() return vim.bo.fileformat ~= 'unix' end },
+        'filetype',
+      },
+    },
+    extensions = { 'neo-tree' },
+  }
 
-  -- You can configure sections in the statusline by overriding their
-  -- default behavior. For example, here we set the section for
-  -- cursor location to LINE:COLUMN
-  ---@diagnostic disable-next-line: duplicate-set-field
-  statusline.section_location = function() return '%2l:%-2v' end
-
-  -- ... and there is more!
+  -- ... and there is more in mini.nvim!
   --  Check out: https://github.com/nvim-mini/mini.nvim
 end
 
