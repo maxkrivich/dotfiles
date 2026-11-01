@@ -7,8 +7,12 @@ kind = "0.33.0"
 kubectl = "latest"
 kubectx = "latest"
 node = "24"
+pre-commit = "latest"
 python = "3.14"
+rust = "latest"
 terraform = "latest"
+terraform-docs = "latest"
+tflint = "latest"
 
 [settings]
 experimental = true

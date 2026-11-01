@@ -33,8 +33,6 @@ brew "mise"
 brew "mole"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Parser generator CLI, used by nvim-treesitter to build parsers
-brew "tree-sitter-cli"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
 # Search tool like grep and The Silver Searcher
@@ -55,6 +53,8 @@ brew "starship"
 brew "tig"
 # Terminal multiplexer
 brew "tmux"
+# Parser generator tool
+brew "tree-sitter-cli"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
