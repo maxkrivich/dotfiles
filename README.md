@@ -14,13 +14,13 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io).
 brew install chezmoi
 
 # initialize and apply dotfiles from this repo
-chezmoi init --apply git@github.com:maxkrivich/dotfiles-config.git
+chezmoi init --apply git@github.com:maxkrivich/dotfiles.git
 ```
 
 On a brand-new machine without SSH keys set up yet, bootstrap over HTTPS instead:
 
 ```sh
-chezmoi init --apply https://github.com/maxkrivich/dotfiles-config.git
+chezmoi init --apply https://github.com/maxkrivich/dotfiles.git
 ```
 
 On first run, chezmoi will prompt once for which SSH agent (1Password or Bitwarden) to use. The answer is cached in chezmoi's own config, so later `chezmoi apply` runs won't re-prompt.
