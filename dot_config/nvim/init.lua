@@ -447,6 +447,14 @@ do
   vim.pack.add { gh 'MeanderingProgrammer/render-markdown.nvim' }
   require('render-markdown').setup {}
 
+  -- Align CSV/TSV columns with virtual text; toggle with :CsvViewToggle
+  vim.pack.add { gh 'hat0uma/csvview.nvim' }
+  require('csvview').setup { view = { display_mode = 'border' } }
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'csv', 'tsv' },
+    callback = function() vim.cmd.CsvViewEnable() end,
+  })
+
   -- [[ mini.nvim ]]
   --  A collection of various small independent plugins/modules
   vim.pack.add { gh 'nvim-mini/mini.nvim' }
@@ -761,6 +769,8 @@ do
   -- Helm templates are detected as plain yaml; mark them as `helm` (only inside a chart) so helm_ls attaches
   local function helm_template(path) return vim.fs.root(path, 'Chart.yaml') and 'helm' or nil end
   vim.filetype.add { pattern = { ['.*/templates/.*%.ya?ml'] = helm_template, ['.*/templates/.*%.tpl'] = helm_template } }
+  -- Neovim only detects `.jinja`; Ansible/Salt templates use `.j2` / `.jinja2`
+  vim.filetype.add { extension = { j2 = 'jinja', jinja2 = 'jinja' } }
 
   ---@type table<string, vim.lsp.Config>
   local servers = {
@@ -773,6 +783,9 @@ do
     bashls = {}, -- runs shellcheck on the fly
     gh_actions_ls = {},
     helm_ls = {},
+    regal = {}, -- Rego (OPA) lint + format
+    texlab = {}, -- LaTeX
+    jinja_lsp = {},
     yamlls = {
       settings = {
         yaml = {
@@ -999,6 +1012,7 @@ do
   local parsers = {
     'bash',
     'c',
+    'csv',
     'diff',
     'go',
     'hcl',
@@ -1011,6 +1025,7 @@ do
     'markdown_inline',
     'python',
     'query',
+    'rego',
     'rust',
     'terraform',
     'vim',
