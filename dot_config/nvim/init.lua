@@ -772,6 +772,9 @@ do
   -- Neovim only detects `.jinja`; Ansible/Salt templates use `.j2` / `.jinja2`
   vim.filetype.add { extension = { j2 = 'jinja', jinja2 = 'jinja' } }
 
+  -- jsonls ships without a schema catalog; SchemaStore maps filenames (package.json, renovate.json, ...) to schemas
+  vim.pack.add { gh 'b0o/SchemaStore.nvim' }
+
   ---@type table<string, vim.lsp.Config>
   local servers = {
     gopls = {},
@@ -788,6 +791,12 @@ do
     regal = {}, -- Rego (OPA) lint + format
     texlab = {}, -- LaTeX
     jinja_lsp = {},
+    jsonls = {
+      settings = {
+        json = { schemas = require('schemastore').json.schemas(), validate = { enable = true } },
+      },
+    },
+    taplo = {}, -- TOML lint + format; resolves schemas from SchemaStore (pyproject, Cargo, mise)
     yamlls = {
       settings = {
         yaml = {
@@ -891,6 +900,7 @@ do
         ['terraform-vars'] = true,
         sh = true,
         bash = true,
+        toml = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }
