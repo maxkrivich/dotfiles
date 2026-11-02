@@ -71,7 +71,12 @@ pager = delta
 excludesfile = {{ .chezmoi.homeDir }}/.config/git/ignore
 [merge]
 verbosity = 5
-tool = diffmerge
+tool = nvimdiff
+conflictstyle = zdiff3
+[mergetool]
+keepBackup = false
+[mergetool "nvimdiff"]
+layout = LOCAL,MERGED,REMOTE
 [diff]
 verbosity = 5
 tool = changes
