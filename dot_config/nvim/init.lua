@@ -782,6 +782,7 @@ do
     tflint = {},
     bashls = {}, -- runs shellcheck on the fly
     gh_actions_ls = {},
+    zizmor = {}, -- GitHub Actions security audit
     docker_language_server = {},
     helm_ls = {},
     regal = {}, -- Rego (OPA) lint + format
@@ -859,6 +860,7 @@ do
     'shellcheck',
     'shfmt',
     'hadolint',
+    'trivy',
   })
 
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -886,6 +888,7 @@ do
         go = true,
         rust = true,
         terraform = true,
+        ['terraform-vars'] = true,
         sh = true,
         bash = true,
       }
@@ -903,6 +906,8 @@ do
       sh = { 'shfmt' },
       bash = { 'shfmt' },
       json = { 'jq' },
+      terraform = { 'terraform_fmt' },
+      ['terraform-vars'] = { 'terraform_fmt' },
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },

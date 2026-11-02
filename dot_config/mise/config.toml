@@ -17,6 +17,8 @@ shellcheck = "latest"
 terraform = "latest"
 terraform-docs = "latest"
 tflint = "latest"
+trivy = "latest"
+zizmor = "latest"
 
 [settings]
 experimental = true
