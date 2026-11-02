@@ -782,6 +782,7 @@ do
     tflint = {},
     bashls = {}, -- runs shellcheck on the fly
     gh_actions_ls = {},
+    docker_language_server = {},
     helm_ls = {},
     regal = {}, -- Rego (OPA) lint + format
     texlab = {}, -- LaTeX
@@ -857,6 +858,7 @@ do
   vim.list_extend(ensure_installed, {
     'shellcheck',
     'shfmt',
+    'hadolint',
   })
 
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }

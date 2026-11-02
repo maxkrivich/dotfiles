@@ -2,6 +2,7 @@
 dagger = "latest"
 fnox = "latest"
 go = "latest"
+hadolint = "latest"
 helm = "latest"
 jq = "latest"
 k9s = "latest"
