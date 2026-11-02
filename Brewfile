@@ -1,6 +1,4 @@
 tap "manaflow-ai/cmux"
-# Static checker for GitHub Actions workflow files
-brew "actionlint"
 # Asciicast to GIF converter
 brew "agg"
 # Record and share terminal sessions
@@ -21,8 +19,6 @@ brew "eza"
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GitHub command-line tool
-brew "gh"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Command-line interface for Hetzner Cloud
@@ -55,12 +51,8 @@ brew "tig"
 brew "tmux"
 # Parser generator tool
 brew "tree-sitter-cli"
-# Extremely fast Python package installer and resolver, written in Rust
-brew "uv"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
 brew "zellij"
-# Find security issues in GitHub Actions setups
-brew "zizmor"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh
@@ -96,8 +88,6 @@ cask "maccy"
 cask "meetingbar"
 # Menu bar toolkit with keep-awake, system monitor and volume mixer
 cask "vorssaint"
-go "cmd/go"
-go "cmd/gofmt"
 cargo "rustlings"
 npm "corepack"
 npm "promptfoo"
