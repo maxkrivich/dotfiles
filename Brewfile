@@ -23,6 +23,10 @@ brew "fzf"
 brew "git-delta"
 # Command-line interface for Hetzner Cloud
 brew "hcloud"
+# Command-line benchmarking tool
+brew "hyperfine"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Deep clean and optimize your Mac
@@ -51,6 +55,8 @@ brew "tig"
 brew "tmux"
 # Parser generator tool
 brew "tree-sitter-cli"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
 brew "zellij"
 # Shell extension to navigate your filesystem faster
@@ -88,6 +94,9 @@ cask "maccy"
 cask "meetingbar"
 # Menu bar toolkit with keep-awake, system monitor and volume mixer
 cask "vorssaint"
+# Multiplayer code editor
+cask "zed"
+go "cmd/go"
+go "cmd/gofmt"
 cargo "rustlings"
 npm "corepack"
-npm "promptfoo"
