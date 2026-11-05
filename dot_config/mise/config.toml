@@ -1,5 +1,6 @@
 [tools]
 actionlint = "latest"
+ast-grep = "latest"
 checkov = "latest"
 dagger = "latest"
 fnox = "latest"
@@ -27,6 +28,7 @@ terraform-docs = "latest"
 tflint = "latest"
 trivy = "latest"
 uv = "latest"
+worktrunk = { version = "latest", workflow = "release.yaml" }
 zizmor = "latest"
 
 [settings]
