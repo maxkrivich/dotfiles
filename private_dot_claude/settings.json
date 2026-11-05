@@ -62,6 +62,11 @@
       }
     }
   },
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "feedbackSurveyRate": 0,
   "alwaysThinkingEnabled": true,
   "theme": "dark"
