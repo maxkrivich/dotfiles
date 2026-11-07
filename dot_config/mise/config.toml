@@ -27,6 +27,7 @@ terraform = "latest"
 terraform-docs = "latest"
 tflint = "latest"
 trivy = "latest"
+ty = "latest"
 uv = "latest"
 worktrunk = { version = "latest", workflow = "release.yaml" }
 zizmor = "latest"

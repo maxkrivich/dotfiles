@@ -416,9 +416,20 @@ do
       { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
+      { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
       { 'gr', group = 'LSP Actions', mode = { 'n' } },
     },
   }
+
+  -- GitHub issues/PRs (gh CLI), lazygit in a float, open file/selection on the remote
+  vim.pack.add { gh 'folke/snacks.nvim' }
+  require('snacks').setup { gh = {}, lazygit = {}, gitbrowse = {} }
+  vim.keymap.set('n', '<leader>gg', function() Snacks.lazygit() end, { desc = 'Lazy[g]it' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>gB', function() Snacks.gitbrowse() end, { desc = 'Git [B]rowse' })
+  vim.keymap.set('n', '<leader>gi', function() Snacks.picker.gh_issue() end, { desc = 'GitHub [I]ssues (open)' })
+  vim.keymap.set('n', '<leader>gI', function() Snacks.picker.gh_issue { state = 'all' } end, { desc = 'GitHub [I]ssues (all)' })
+  vim.keymap.set('n', '<leader>gp', function() Snacks.picker.gh_pr() end, { desc = 'GitHub [P]Rs (open)' })
+  vim.keymap.set('n', '<leader>gP', function() Snacks.picker.gh_pr { state = 'all' } end, { desc = 'GitHub [P]Rs (all)' })
 
   -- [[ Colorscheme ]]
   -- You can easily change to a different colorscheme.
@@ -442,6 +453,16 @@ do
   -- Highlight todo, notes, etc in comments
   vim.pack.add { gh 'folke/todo-comments.nvim' }
   require('todo-comments').setup { signs = false }
+
+  -- Highlight other uses of the word under the cursor (LSP, treesitter, or regex);
+  -- jump between them with <M-n> / <M-p>
+  vim.pack.add { gh 'RRethy/vim-illuminate' }
+  require('illuminate').configure {}
+
+  -- Project-wide search and replace; open with :GrugFar
+  vim.pack.add { gh 'MagicDuck/grug-far.nvim' }
+  require('grug-far').setup {}
+  vim.keymap.set({ 'n', 'v' }, '<leader>sR', function() require('grug-far').open() end, { desc = '[S]earch and [R]eplace' })
 
   -- Render markdown in the buffer; toggle with :RenderMarkdown toggle
   vim.pack.add { gh 'MeanderingProgrammer/render-markdown.nvim' }
@@ -724,34 +745,7 @@ do
       --  For example, in C this would take you to the header.
       map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-      -- The following two autocommands are used to highlight references of the
-      -- word under your cursor when your cursor rests there for a little while.
-      --    See `:help CursorHold` for information about when this is executed
-      --
-      -- When you move your cursor, the highlights will be cleared (the second autocommand).
       local client = vim.lsp.get_client_by_id(event.data.client_id)
-      if client and client:supports_method('textDocument/documentHighlight', event.buf) then
-        local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
-        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-          buffer = event.buf,
-          group = highlight_augroup,
-          callback = vim.lsp.buf.document_highlight,
-        })
-
-        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-          buffer = event.buf,
-          group = highlight_augroup,
-          callback = vim.lsp.buf.clear_references,
-        })
-
-        vim.api.nvim_create_autocmd('LspDetach', {
-          group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
-          callback = function(event2)
-            vim.lsp.buf.clear_references()
-            vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
-          end,
-        })
-      end
 
       -- The following code creates a keymap to toggle inlay hints in your
       -- code, if the language server you are using supports them
@@ -864,13 +858,11 @@ do
   --    :Mason
   --
   -- You can press `g?` for help in this menu.
-  local ensure_installed = vim.tbl_keys(servers or {})
-  vim.list_extend(ensure_installed, {
-    'shellcheck',
-    'shfmt',
-    'hadolint',
-    'trivy',
-  })
+  -- Installed by mise instead, which honours the 7-day release cooldown; Mason pins the newest
+  -- release, which pip.conf's `uploaded-prior-to` hides. shellcheck, hadolint, trivy (mise) and
+  -- shfmt (Brewfile) are on PATH for bashls, nvim-lint and conform.
+  local outside_mason = { ruff = true, ty = true, tflint = true, zizmor = true }
+  local ensure_installed = vim.tbl_filter(function(name) return not outside_mason[name] end, vim.tbl_keys(servers))
 
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

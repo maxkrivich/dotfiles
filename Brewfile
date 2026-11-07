@@ -1,4 +1,5 @@
 tap "manaflow-ai/cmux"
+tap "nikitabobko/tap"
 # Asciicast to GIF converter
 brew "agg"
 # Record and share terminal sessions
@@ -15,6 +16,8 @@ brew "btop"
 brew "chezmoi"
 # Modern, maintained replacement for ls
 brew "eza"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
@@ -49,6 +52,8 @@ brew "rsync"
 brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
+# General purpose fuzzy finder TUI
+brew "television"
 # Text interface for Git repositories
 brew "tig"
 # Terminal multiplexer
@@ -69,6 +74,8 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 # Command-line interface for 1Password
 cask "1password-cli"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "nikitabobko/tap/aerospace", trusted: true
 # Terminal-based AI coding assistant
 cask "claude-code"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents

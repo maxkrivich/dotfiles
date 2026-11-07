@@ -1,10 +1,4 @@
-export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="af-magic"
-
-plugins=(colored-man-pages git ruby nmap pip sudo tmux vscode python man gitignore dotenv ansible npm minikube microk8s kubectl httpie golang)
-
-source $ZSH/oh-my-zsh.sh
+autoload -Uz compinit && compinit
 
 source <(fzf --zsh)
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
