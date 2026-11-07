@@ -1090,6 +1090,28 @@ do
       end
     end,
   })
+
+  -- [[ Docstring generation ]]
+  --  Uses treesitter to generate doc comments for the function/class under the cursor
+  --
+  --  See `:help neogen`
+  vim.pack.add { gh 'danymat/neogen' }
+  require('neogen').setup {
+    snippet_engine = 'luasnip',
+    languages = {
+      python = { template = { annotation_convention = 'google_docstrings' } },
+    },
+  }
+
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'python', 'rust', 'go' },
+    callback = function(args)
+      vim.keymap.set('n', '<leader>cd', function() require('neogen').generate() end, {
+        buffer = args.buf,
+        desc = '[C]ode [D]ocstring',
+      })
+    end,
+  })
 end
 
 -- ============================================================
