@@ -457,7 +457,13 @@ do
   -- Highlight other uses of the word under the cursor (LSP, treesitter, or regex);
   -- jump between them with <M-n> / <M-p>
   vim.pack.add { gh 'RRethy/vim-illuminate' }
-  require('illuminate').configure {}
+  require('illuminate').configure {
+    delay = 200,
+    large_file_cutoff = 2000,
+    large_file_overrides = {
+      providers = { 'lsp' },
+    },
+  }
 
   -- Project-wide search and replace; open with :GrugFar
   vim.pack.add { gh 'MagicDuck/grug-far.nvim' }
