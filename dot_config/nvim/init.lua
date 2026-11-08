@@ -212,6 +212,16 @@ do
   }
 
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+  vim.keymap.set('n', '<leader>td', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, { desc = '[T]oggle [D]iagnostics' })
+  vim.keymap.set({ 'n', 'v' }, '<C-z>', '<Nop>', { desc = 'Disable suspend' })
+
+  vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+  vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+
+  vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Half page down, centred' })
+  vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Half page up, centred' })
+  vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next match, centred' })
+  vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous match, centred' })
 
   -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
   -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -528,6 +538,7 @@ do
     dashboard.button('e', '  File tree', '<Cmd>Neotree reveal<CR>'),
     dashboard.button('n', '  New file', '<Cmd>enew<CR>'),
     dashboard.button('c', '  Config', "<Cmd>lua require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' }<CR>"),
+    dashboard.button('u', '󰚰  Update plugins', '<Cmd>lua vim.pack.update()<CR>'),
     dashboard.button('q', '󰅚  Quit', '<Cmd>qa<CR>'),
   }
   require('alpha').setup(dashboard.config)
@@ -550,6 +561,11 @@ do
     },
     extensions = { 'neo-tree' },
   }
+
+  -- Breadcrumbs winbar (path + LSP/treesitter symbols). See `:help dropbar`
+  vim.pack.add { gh 'Bekaboo/dropbar.nvim' }
+  require('dropbar').setup()
+  vim.keymap.set('n', '<leader>;', require('dropbar.api').pick, { desc = 'Pick breadcrumb' })
 
   -- ... and there is more in mini.nvim!
   --  Check out: https://github.com/nvim-mini/mini.nvim

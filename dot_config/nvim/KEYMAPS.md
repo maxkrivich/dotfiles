@@ -52,6 +52,7 @@
 | `]D` / `[D` | Last / first diagnostic |
 | `Ctrl w d` | Show diagnostic under cursor |
 | `<leader>q` | Diagnostics to quickfix list |
+| `<leader>td` | Toggle diagnostics |
 
 ## Completion (insert mode)
 
@@ -102,6 +103,7 @@ Brackets and quotes auto-close (mini.pairs).
 |---|---|
 | `Ctrl h/j/k/l` | Move between windows |
 | `\` | Reveal file in Neo-tree |
+| `<leader>;` | Pick breadcrumb (dropbar) |
 | `Esc Esc` | Exit terminal mode |
 | `]b` / `[b` | Next / previous buffer |
 | `]q` / `[q` | Next / previous quickfix item |
@@ -119,6 +121,9 @@ Brackets and quotes auto-close (mini.pairs).
 | `aa` / `ii`, `al` / `il` | Next / last textobject |
 | `]<Space>` / `[<Space>` | Add empty line below / above |
 | `gx` | Open URL / file under cursor |
+| `Ctrl d` / `Ctrl u` | Half page down / up, centred |
+| `n` / `N` | Next / previous match, centred |
+| `Ctrl z` | Disabled (no suspend) |
 
 ## Visual mode (treesitter selection)
 
@@ -127,3 +132,4 @@ Brackets and quotes auto-close (mini.pairs).
 | `an` / `in` | Expand / shrink selection to node |
 | `]n` / `[n` | Next / previous node |
 | `]N` / `[N` | Next / previous sibling node |
+| `J` / `K` | Move selection down / up (re-indents) |
