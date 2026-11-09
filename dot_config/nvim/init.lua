@@ -427,6 +427,7 @@ do
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
       { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
+      { '<leader>x', group = 'Merge conflict (o/t/b/0)' },
       { 'gr', group = 'LSP Actions', mode = { 'n' } },
     },
   }
@@ -453,12 +454,36 @@ do
     styles = {
       comments = { italic = false }, -- Disable italics in comments
     },
+    on_highlights = function(hl, c)
+      local blend = require('tokyonight.util').blend_bg
+      hl.GitConflictCurrent = { bg = blend(c.blue, 0.2) }
+      hl.GitConflictCurrentLabel = { bg = blend(c.blue, 0.45), bold = true }
+      hl.GitConflictIncoming = { bg = blend(c.green, 0.2) }
+      hl.GitConflictIncomingLabel = { bg = blend(c.green, 0.45), bold = true }
+      hl.GitConflictAncestor = { bg = blend(c.purple, 0.2) }
+      hl.GitConflictAncestorLabel = { bg = blend(c.purple, 0.45), bold = true }
+    end,
   }
 
   -- Load the colorscheme here.
   -- Like many other themes, this one has different styles, and you could load
   -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
   vim.cmd.colorscheme 'tokyonight-night'
+
+  -- Inline merge conflict resolution: ]x/[x jump between conflicts
+  -- Colors come from tokyonight's on_highlights (GitConflict* groups) above.
+  -- Leader keys instead of the default co/ct/...: those race timeoutlen against the `c` operator.
+  vim.pack.add { { src = gh 'akinsho/git-conflict.nvim', version = vim.version.range '2.*' } }
+  require('git-conflict').setup {
+    default_mappings = {
+      ours = '<leader>xo',
+      theirs = '<leader>xt',
+      both = '<leader>xb',
+      none = '<leader>x0',
+      next = ']x',
+      prev = '[x',
+    },
+  }
 
   -- Highlight todo, notes, etc in comments
   vim.pack.add { gh 'folke/todo-comments.nvim' }
