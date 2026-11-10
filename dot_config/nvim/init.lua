@@ -582,6 +582,21 @@ do
     dashboard.button('u', '󰚰  Update plugins', '<Cmd>lua vim.pack.update()<CR>'),
     dashboard.button('q', '󰅚  Quit', '<Cmd>qa<CR>'),
   }
+  -- Recent sessions as 1-5; file name is cwd with '/' -> '%', plus '%%branch'
+  local sessions_dir = require('persistence.config').options.dir
+  local seen, session_buttons = {}, {}
+  for _, file in ipairs(require('persistence').list()) do
+    local dir = vim.split(file:sub(#sessions_dir + 1, -5), '%%', { plain = true })[1]:gsub('%%', '/')
+    if not seen[dir] and #session_buttons < 5 then
+      seen[dir] = true
+      local key = tostring(#session_buttons + 1)
+      local cmd = '<Cmd>cd ' .. vim.fn.fnameescape(dir) .. " | lua require('persistence').load()<CR>"
+      table.insert(session_buttons, dashboard.button(key, '  ' .. vim.fn.fnamemodify(dir, ':~'), cmd))
+    end
+  end
+  dashboard.section.sessions = { type = 'group', val = session_buttons, opts = { spacing = 1 } }
+  table.insert(dashboard.config.layout, 5, { type = 'padding', val = 1 })
+  table.insert(dashboard.config.layout, 6, dashboard.section.sessions)
   require('alpha').setup(dashboard.config)
 
   -- Statusline. See `:help lualine.txt`
