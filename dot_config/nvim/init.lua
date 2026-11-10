@@ -594,9 +594,14 @@ do
       table.insert(session_buttons, dashboard.button(key, '  ' .. vim.fn.fnamemodify(dir, ':~'), cmd))
     end
   end
-  dashboard.section.sessions = { type = 'group', val = session_buttons, opts = { spacing = 1 } }
-  table.insert(dashboard.config.layout, 5, { type = 'padding', val = 1 })
-  table.insert(dashboard.config.layout, 6, dashboard.section.sessions)
+  if #session_buttons > 0 then
+    local separator = { type = 'text', val = '──────── Recent sessions ────────', opts = { position = 'center', hl = 'Comment' } }
+    dashboard.section.sessions = { type = 'group', val = session_buttons, opts = { spacing = 1 } }
+    table.insert(dashboard.config.layout, 5, { type = 'padding', val = 1 })
+    table.insert(dashboard.config.layout, 6, separator)
+    table.insert(dashboard.config.layout, 7, { type = 'padding', val = 1 })
+    table.insert(dashboard.config.layout, 8, dashboard.section.sessions)
+  end
   require('alpha').setup(dashboard.config)
 
   -- Statusline. See `:help lualine.txt`
