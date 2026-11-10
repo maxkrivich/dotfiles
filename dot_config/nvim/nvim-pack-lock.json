@@ -121,6 +121,11 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
+    "persistence.nvim": {
+      "rev": "c45ff862b53ce07a853a753fb0b33e148dbb99d2",
+      "src": "https://github.com/folke/persistence.nvim",
+      "version": "3.0.0 - 4.0.0"
+    },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"

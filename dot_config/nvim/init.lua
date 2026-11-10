@@ -428,6 +428,7 @@ do
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
       { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
       { '<leader>x', group = 'Merge conflict (o/t/b/0)' },
+      { '<leader>S', group = '[S]ession' },
       { 'gr', group = 'LSP Actions', mode = { 'n' } },
     },
   }
@@ -553,10 +554,25 @@ do
   -- Auto-close brackets and quotes as you type
   require('mini.pairs').setup()
 
+  -- Session per cwd (+ git branch), saved on exit; restore is manual
+  -- <leader>S instead of the usual <leader>q: that's taken by the diagnostic loclist.
+  vim.pack.add { { src = gh 'folke/persistence.nvim', version = vim.version.range '3.*' } }
+  require('persistence').setup()
+  vim.keymap.set('n', '<leader>Ss', function() require('persistence').load() end, { desc = '[S]ession re[s]tore (cwd)' })
+  vim.keymap.set('n', '<leader>Sl', function() require('persistence').load { last = true } end, { desc = '[S]ession restore [l]ast' })
+  vim.keymap.set('n', '<leader>Sf', function() require('persistence').select() end, { desc = '[S]ession [f]ind' })
+  vim.keymap.set('n', '<leader>Sd', function() require('persistence').stop() end, { desc = "[S]ession [d]on't save" })
+  -- Neo-tree windows restore as empty buffers, so close them before saving
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'PersistenceSavePre',
+    callback = function() vim.cmd 'silent! Neotree close' end,
+  })
+
   -- Start screen when nvim opens without a file
   vim.pack.add { gh 'goolord/alpha-nvim' }
   local dashboard = require 'alpha.themes.dashboard'
   dashboard.section.buttons.val = {
+    dashboard.button('s', '  Restore session', "<Cmd>lua require('persistence').load()<CR>"),
     dashboard.button('f', '󰈞  Find file', '<Cmd>Telescope find_files<CR>'),
     dashboard.button('r', '  Recent files', '<Cmd>Telescope oldfiles<CR>'),
     dashboard.button('g', '󰈬  Find word', '<Cmd>Telescope live_grep<CR>'),

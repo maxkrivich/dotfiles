@@ -108,6 +108,17 @@ Brackets and quotes auto-close (mini.pairs).
 | `]b` / `[b` | Next / previous buffer |
 | `]q` / `[q` | Next / previous quickfix item |
 
+## Sessions (persistence.nvim)
+
+Saved on exit, one per directory + git branch. `s` on the start screen restores.
+
+| Key | Action |
+|---|---|
+| `<leader>Ss` | Restore session for cwd |
+| `<leader>Sl` | Restore last session |
+| `<leader>Sf` | Pick a session |
+| `<leader>Sd` | Don't save this session on exit |
+
 ## Editing
 
 | Key | Action |
