@@ -731,6 +731,12 @@ url = "https://nodejs.org/dist/v24.22.1/node-v24.22.1-darwin-x64.tar.gz"
 checksum = "sha256:d2046d28c2c3dcd211ac5145c0bf30e2047ef9dfb306693c8c6e2eccd8b95fa5"
 url = "https://nodejs.org/dist/v24.22.1/node-v24.22.1-win-x64.zip"
 
+[[tools."npm:@earendil-works/pi-coding-agent"]]
+version = "1.5.0"
+aube = { path = "locks/npm-earendil-works-pi-coding-agent/1.5.0", digest = "sha256:13825720f0d5dbddd0944caf20b7e6511688224abb231b6f1cdffa05220c0b85" }
+backend = "npm:@earendil-works/pi-coding-agent"
+specifiers = ["latest"]
+
 [[tools.opentofu]]
 version = "1.13.2"
 backend = "aqua:opentofu/opentofu"
