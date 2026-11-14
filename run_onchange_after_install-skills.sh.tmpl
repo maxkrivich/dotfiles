@@ -1,0 +1,28 @@
+#!/bin/bash
+set -euo pipefail
+
+# skill-lock.json hash: {{ include "dot_agents/dot_skill-lock.json" | sha256sum }}
+# Reinstalls global agent skills from ~/.agents/.skill-lock.json when the lock file changes.
+
+lock="$HOME/.agents/.skill-lock.json"
+
+for cmd in jq npx; do
+  if ! command -v "$cmd" >/dev/null; then
+    echo "install-skills: $cmd is not on PATH. Run 'mise install' and then 'chezmoi apply'." >&2
+    exit 1
+  fi
+done
+
+agent_args=()
+while read -r agent; do
+  agent_args+=(--agent "$agent")
+done < <(jq -r '.lastSelectedAgents[]' "$lock")
+
+while read -r source; do
+  skill_args=()
+  while read -r skill; do
+    skill_args+=(--skill "$skill")
+  done < <(jq -r --arg src "$source" \
+    '.skills | to_entries[] | select(.value.sourceUrl == $src) | .key' "$lock")
+  npx -y skills add "$source" --global --yes "${skill_args[@]}" "${agent_args[@]}" </dev/null
+done < <(jq -r '[.skills[].sourceUrl] | unique[]' "$lock")
