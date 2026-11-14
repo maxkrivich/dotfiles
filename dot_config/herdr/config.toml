@@ -1,0 +1,12 @@
+onboarding = false
+
+[theme]
+name = "tokyo-night"
+auto_switch = false
+
+[ui]
+status_indicators = "symbols"
+tab_bar_position = "bottom"
+tab_bar_right = [
+  { type = "text", text = "Ctrl+b → ? Help · c Tab · v/- Split · w Spaces · q Detach" },
+]
