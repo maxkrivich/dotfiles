@@ -17,6 +17,7 @@ keybinds clear-defaults=true {
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "normal"; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "normal"; }
         bind "Shift f" { ToggleFocusNoUiFullscreen; SwitchToMode "normal"; }
+        bind "g" { IgnorePaneOutput; SwitchToMode "normal"; }
         bind "h" { MoveFocus "left"; }
         bind "i" { TogglePanePinned; SwitchToMode "normal"; }
         bind "j" { MoveFocus "down"; }
@@ -27,6 +28,8 @@ keybinds clear-defaults=true {
         bind "Ctrl p" { SwitchToMode "normal"; }
         bind "r" { NewPane "right"; SwitchToMode "normal"; }
         bind "s" { NewPane "stacked"; SwitchToMode "normal"; }
+        bind "u" { MutePane; SwitchToMode "normal"; }
+        bind "v" { WatchPane; SwitchToMode "normal"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "normal"; }
         bind "z" { TogglePaneFrames; SwitchToMode "normal"; }
     }
@@ -55,6 +58,7 @@ keybinds clear-defaults=true {
         bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "normal"; }
         bind "Ctrl t" { SwitchToMode "normal"; }
+        bind "u" { MuteTab; SwitchToMode "normal"; }
         bind "x" { CloseTab; SwitchToMode "normal"; }
         bind "tab" { ToggleTab; }
     }
@@ -128,6 +132,7 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
         bind "f" { ToggleHostFullscreen; SwitchToMode "normal"; }
+        bind "i" { ToggleSessionCard; SwitchToMode "normal"; }
         bind "l" {
             LaunchOrFocusPlugin "zellij:layout-manager" {
                 floating true
@@ -136,6 +141,7 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
         bind "Ctrl o" { SwitchToMode "normal"; }
+        bind "n" { GoToNextAttention; SwitchToMode "normal"; }
         bind "p" {
             LaunchOrFocusPlugin "plugin-manager" {
                 floating true
@@ -150,6 +156,7 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "normal"
         }
+        bind "u" { MuteSession; SwitchToMode "normal"; }
         bind "w" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
