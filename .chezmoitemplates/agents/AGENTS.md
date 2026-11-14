@@ -1,6 +1,6 @@
 # Global Development Standards
 
-Global instructions for all projects. Project-specific CLAUDE.md files override these defaults.
+Global instructions for all projects. Project-specific AGENTS.md or CLAUDE.md files override these defaults.
 
 - Use skills proactively when they match the task — suggest relevant ones, don't block on them
 
@@ -37,9 +37,9 @@ Code should be self-documenting. No commented-out code—delete it. If you need 
 
 ### Error handling
 
-- Fail fast with clear, actionable messages
+- Fail fast
 - Never swallow exceptions silently
-- Include context (what operation, what input, suggested fix)
+- Write error messages by the rules in Writing Standards → Error messages
 
 ### Reviewing code
 
@@ -93,7 +93,7 @@ Prefer `ast-grep` over ripgrep when searching for code structure (function calls
 
 Tests in `tests/` directory mirroring package structure. Supply chain: `pip-audit` before deploying, pin exact versions (`==` not `>=`), verify hashes with `uv pip install --require-hashes`.
 
- ### Golang
+### Golang
 
 **Runtime:** always use latest stable Go
 
@@ -164,10 +164,6 @@ Follow the [Uber Go Style Guide](https://github.com/uber-go/guide/blob/master/st
 - Run `govulncheck ./...` before deploying.
 - Never delete `go.sum`. Avoid pseudo-versions on non-main branches.
 
-The main additions over my previous suggestion: compile-time interface assertions, the var _ Interface = (*Impl)(nil) pattern, no-pointer-to-interface rule, functional options, struct literal discipline,
-copy-at-boundaries for maps/slices, strconv over fmt.Sprintf, and the init() / os.Exit placement rules — all sourced directly from the Uber guide.
-
-
 ### Node/TypeScript
 
 **Runtime:** Node 22 LTS, ESM only (`"type": "module"`)
@@ -223,11 +219,9 @@ Pin actions to SHA hashes with version comments: `actions/checkout@<full-sha>  #
 **Pull requests:**
 Describe what the code does now — not discarded approaches, prior iterations, or alternatives. Only describe what's in the diff.
 
-Use plain, factual language. A bug fix is a bug fix, not a "critical stability improvement." Avoid: critical, crucial, essential, significant, comprehensive, robust, elegant.
+## Agent Guardrails
 
-## Claude Guardrails
-
-These are settings-level safety behaviors as instruction-level guardrails .
+These rules repeat the harness permission settings as instructions, so they apply in every harness.
 
 ### Forbidden shell commands
 
@@ -238,7 +232,6 @@ These are settings-level safety behaviors as instruction-level guardrails .
 - Never run `git reset --hard` unless explicitly requested by user in the current task.
 - Never push directly to `main` or `master`.
 - Never run `env`, `printenv`, or `set`.
-- Never run `~/.ssh`, `~/.aws`, `~/.kube` unless I ask.
 
 ### Sensitive file access
 
