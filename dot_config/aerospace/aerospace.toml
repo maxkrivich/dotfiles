@@ -32,6 +32,7 @@ gaps.outer.right =      10
 # Home monitors. Elsewhere the names do not match and AeroSpace places workspaces as usual.
 [workspace-to-monitor-force-assignment]
     B = 'Q2738SG'
+    C = 'PL2474H'
     G = 'PL2474H'
     M = 'PL2474H'
     V = 'PL2474H'
