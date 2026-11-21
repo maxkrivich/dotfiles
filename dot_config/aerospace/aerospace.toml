@@ -38,6 +38,11 @@ gaps.outer.right =      10
     V = 'PL2474H'
 
 [mode.main.binding]
+    cmd-m = []      # Disable "Minimize"
+    cmd-alt-m = []  # Disable "Minimize All"
+    cmd-h = []      # Disable "Hide Application"
+    cmd-alt-h = []  # Disable "Hide Others"
+
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
     alt-shift-f = 'fullscreen'
