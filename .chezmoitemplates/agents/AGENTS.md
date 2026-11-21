@@ -80,7 +80,7 @@ Prefer `ast-grep` over ripgrep when searching for code structure (function calls
 
 ### Python
 
-**Runtime:** 3.13 with `uv venv`
+**Runtime:** 3.15 with `uv venv`
 
 | purpose | tool |
 |---------|------|
