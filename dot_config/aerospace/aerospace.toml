@@ -29,6 +29,13 @@ gaps.outer.bottom =     10
 gaps.outer.top =        10
 gaps.outer.right =      10
 
+# Home monitors. Elsewhere the names do not match and AeroSpace places workspaces as usual.
+[workspace-to-monitor-force-assignment]
+    B = 'Q2738SG'
+    G = 'PL2474H'
+    M = 'PL2474H'
+    V = 'PL2474H'
+
 [mode.main.binding]
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
@@ -139,9 +146,15 @@ gaps.outer.right =      10
     if.app-id = 'com.bitwarden.desktop'
     run = 'move-node-to-workspace V'
 
+# Main window titles end in "— 1Password". Other windows (Touch ID prompts, Quick Access) float.
 [[on-window-detected]]
     if.app-id = 'com.1password.1password'
+    if.window-title-regex-substring = ' 1Password$'
     run = 'move-node-to-workspace V'
+
+[[on-window-detected]]
+    if.app-id = 'com.1password.1password'
+    run = 'layout floating'
 
 [[on-window-detected]]
     if.app-id = 'com.apple.finder'
