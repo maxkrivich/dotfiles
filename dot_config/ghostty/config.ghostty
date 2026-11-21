@@ -17,6 +17,9 @@ window-decoration = true
 
 macos-option-as-alt = true
 
+# AeroSpace tiles each native macOS tab as a separate window. Use zellij or tmux tabs instead.
+keybind = cmd+t=unbind
+
 
 # Window size
 window-width = 120
