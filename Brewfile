@@ -1,3 +1,4 @@
+tap "docker/tap", trusted: true
 tap "manaflow-ai/cmux"
 tap "nikitabobko/tap"
 # Asciicast to GIF converter
@@ -24,6 +25,8 @@ brew "fd"
 brew "fzf"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# CLI for making updates across multiple Github repositories with a single command
+brew "git-xargs"
 # Command-line interface for Hetzner Cloud
 brew "hcloud"
 # Command-line benchmarking tool
@@ -52,6 +55,8 @@ brew "rsync"
 brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale"
 # General purpose fuzzy finder TUI
 brew "television"
 # Text interface for Git repositories
@@ -97,8 +102,10 @@ cask "headlamp"
 cask "lulu"
 # Clipboard manager
 cask "maccy"
-# Shows the next meeting in the menu bar
+# Meetings in your menu bar
 cask "meetingbar"
+# Build, run, and govern agents across the software development lifecycle
+cask "docker/tap/sbx", trusted: true
 # Menu bar toolkit with keep-awake, system monitor and volume mixer
 cask "vorssaint"
 # Multiplayer code editor

@@ -1,0 +1,48 @@
+{
+  "general": {
+    "defaultApprovalMode": "default"
+  },
+  "security": {
+    "folderTrust": {
+      "enabled": true
+    },
+    "toolSandboxing": true,
+    "disableYoloMode": true,
+    "disableAlwaysAllow": true,
+    "blockGitExtensions": true,
+    "environmentVariableRedaction": {
+      "enabled": true,
+      "blocked": [
+        "AWS_ACCESS_KEY_ID",
+        "AWS_SECRET_ACCESS_KEY",
+        "AWS_SESSION_TOKEN",
+        "GITHUB_TOKEN",
+        "GH_TOKEN",
+        "GOOGLE_API_KEY",
+        "GEMINI_API_KEY",
+        "GOOGLE_APPLICATION_CREDENTIALS",
+        "DATABASE_URL",
+        "DB_URI",
+        "CONNECTION_STRING"
+      ]
+    }
+  },
+  "tools": {
+    "sandboxNetworkAccess": false
+  },
+  "advanced": {
+    "ignoreLocalEnv": true
+  },
+  "context": {
+    "fileName": [
+      "AGENTS.md",
+      "GEMINI.md"
+    ]
+  },
+  "privacy": {
+    "usageStatisticsEnabled": false
+  },
+  "telemetry": {
+    "enabled": false
+  }
+}
