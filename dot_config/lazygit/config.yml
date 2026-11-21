@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+gui:
+  nerdFontsVersion: "3"
+  showRandomTip: false
+  showCommandLog: false
+  expandFocusedSidePanel: true
+
+git:
+  diffRenderers:
+    - command: delta --{{colorScheme}} --paging=never
+  overrideGpg: true
+
+update:
+  method: never
+
+promptToReturnFromSubprocess: false
+disableStartupPopups: true
+confirmOnQuit: false
+quitOnTopLevelReturn: false
