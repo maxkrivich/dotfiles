@@ -1,0 +1,29 @@
+set diff-view = line-number:yes,interval=1 text:yes
+set diff-options = --histogram --indent-heuristic
+set ignore-space = no
+set line-graphics = utf-8
+set tab-size = 4
+set vertical-split = auto
+set split-view-width = 70%
+set split-view-height = 75%
+set truncation-delimiter = utf-8
+set main-view = id:yes date:relative author:abbreviated commit-title:graph=yes,refs=yes
+set mouse = true
+set refresh-mode = auto
+set ignore-case = smart-case
+
+bind generic g      move-first-line
+bind generic G      move-last-line
+bind generic Y      @sh -c "printf %s %(commit) | pbcopy"
+
+color diff-header   yellow default bold
+color diff-chunk    magenta default bold
+color diff-add      green default
+color diff-del      red default
+color diff-stat     blue default
+
+# D: open the selected diff in delta; --paging=always keeps short diffs open until q
+bind main   D >sh -c "git show %(commit) | delta --paging=always"
+bind diff   D >sh -c "git show %(commit) | delta --paging=always"
+bind status D >sh -c "git diff HEAD -- %(file) | delta --paging=always"
+bind stage  D >sh -c "git diff HEAD -- %(file) | delta --paging=always"
