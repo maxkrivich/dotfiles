@@ -1,4 +1,5 @@
 exclude-newer = "7 days"
+no-build = true
 
 [audit]
 malware-check = true
