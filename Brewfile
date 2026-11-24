@@ -7,6 +7,8 @@ brew "agg"
 brew "asciinema"
 # Code searching, linting, rewriting
 brew "ast-grep"
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -23,12 +25,16 @@ brew "fastfetch"
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Interact with Google Gemini AI models from the command-line
+brew "gemini-cli"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # CLI for making updates across multiple Github repositories with a single command
 brew "git-xargs"
 # Command-line interface for Hetzner Cloud
 brew "hcloud"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Simple terminal UI for git commands

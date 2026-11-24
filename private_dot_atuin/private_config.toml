@@ -1,0 +1,28 @@
+## Full reference: https://docs.atuin.sh/configuration/config/
+
+search_mode = "daemon-fuzzy"
+enter_accept = true
+
+## Do not send history to a sync server. Set to true after `atuin login`.
+auto_sync = false
+## Do not contact GitHub on every search. The package manager handles updates.
+update_check = false
+
+## Drop commands that contain known token formats (AWS, GitHub, Slack, Stripe).
+secrets_filter = true
+
+## Drop commands that contain inline credentials. Regexes are unanchored.
+history_filter = [
+  '(?i)\b(password|passwd|pwd|secret|token|api[_-]?key|access[_-]?key)\s*=\s*\S+',
+  '(?i)--(password|passwd|secret|token|api[_-]?key)[= ]\S+',
+  '(?i)authorization:\s*(bearer|basic|token)\s',
+  '\s-u\s+\S+:\S+',
+  '[a-z][a-z0-9+.-]*://[^/\s:@]+:[^/\s@]+@',
+]
+
+[daemon]
+enabled = true
+autostart = true
+
+[threads]
+enabled = true

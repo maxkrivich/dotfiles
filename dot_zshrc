@@ -1,6 +1,7 @@
 autoload -Uz compinit && compinit
 
-source <(fzf --zsh)
+# Disabled: atuin owns Ctrl-R. This also drops fzf's Ctrl-T and Alt-C.
+# source <(fzf --zsh)
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -32,3 +33,5 @@ eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+eval "$(atuin init zsh --disable-up-arrow)"
