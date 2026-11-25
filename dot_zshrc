@@ -1,9 +1,9 @@
+fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
 autoload -Uz compinit && compinit
 
 # Disabled: atuin owns Ctrl-R. This also drops fzf's Ctrl-T and Alt-C.
 # source <(fzf --zsh)
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -35,3 +35,6 @@ eval "$(zoxide init zsh)"
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
 eval "$(atuin init zsh --disable-up-arrow)"
+
+# Must be sourced last: it wraps every widget defined before it.
+source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

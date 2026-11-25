@@ -4,3 +4,9 @@
   signingkey = {{ .profile.key }}
 [core]
   sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519_{{ .name }}.pub
+[hook "block-main-push"]
+  event = pre-push
+  command = ~/.config/git/hooks/block-main push
+[hook "block-main-commit"]
+  event = pre-commit
+  command = ~/.config/git/hooks/block-main commit

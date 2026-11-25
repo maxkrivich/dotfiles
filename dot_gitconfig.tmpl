@@ -25,11 +25,11 @@ sh = auto
 ui = true
 [alias]
 a = add -A
-c = commit -m
-ca = commit --amend --no-edit
+c = commit -s -m
+ca = commit -s --amend --no-edit
 st = status --untracked-files=all
-ci = commit -v
-ic = commit -v
+ci = commit -s -v
+ic = commit -s -v
 br = branch -vv
 bro = browse
 co = checkout
@@ -51,8 +51,8 @@ cf = !branch="$(git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \\
 rh = reset --hard
 mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
 sync = "!git fetch origin -v; git fetch upstream; git rebase upstream/$(git mainbranch); git push"
-ammend = commit --amend
-amend = commit --amend
+ammend = commit -s --amend
+amend = commit -s --amend
 pr = "!f() { open \"$(git ls-remote --get-url $(git config --get branch.$(git rev-parse --abbrev-ref HEAD).remote) | sed 's|git@[^:]*:|https://github.com/|' | sed 's|\\.git$||')/compare/$(git config --get branch.$(git rev-parse --abbrev-ref HEAD).merge | cut -d '/' -f 3-)?expand=1\"; }; f"
 hub = "!f() { open \"$(git ls-remote --get-url | sed 's|git@[^:]*:|https://github.com/|' | sed 's|\\.git$||')\"; }; f"
 restore = "!f() { git checkout $(git rev-list -n 1 HEAD -- $1)~1 -- $(git diff --name-status $(git rev-list -n 1 HEAD -- $1)~1 | grep '^D' | cut -f 2); }; f"
@@ -90,8 +90,11 @@ date = local
 rebase = true
 [commit]
 gpgsign = true
+[hook "gitleaks"]
+event = pre-commit
+command = gitleaks git --staged --redact --no-banner --log-level warn --verbose
 [help]
-  autocorrect = prompt 
+  autocorrect = prompt
 [init]
   defaultBranch = main
 [interactive]

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+block() {
+  echo "Blocked $1 to $2: work repos use pull requests." >&2
+  echo "Use a feature branch (git switch -c <name>), or bypass with: git $1 --no-verify" >&2
+  exit 1
+}
+
+case "${1:?usage: block-main commit|push}" in
+commit)
+  branch="$(git branch --show-current)"
+  case "$branch" in main | master) block commit "$branch" ;; esac
+  ;;
+push)
+  while read -r _ _ remote_ref _; do
+    case "$remote_ref" in refs/heads/main | refs/heads/master) block push "${remote_ref#refs/heads/}" ;; esac
+  done
+  ;;
+*)
+  echo "block-main: unknown mode \"$1\". Use \"commit\" or \"push\"." >&2
+  exit 2
+  ;;
+esac
