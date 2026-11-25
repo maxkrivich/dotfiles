@@ -71,6 +71,8 @@ brew "tig"
 brew "tmux"
 # Parser generator tool
 brew "tree-sitter-cli"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
